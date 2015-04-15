@@ -1,0 +1,25 @@
+namespace banking {
+	component AccountComp {
+		provides accountTransfer : interfaces.IAccountBasicOperation
+	}
+	component DeskComp {
+		provides deskTransfert : interfaces.IBankTransfert
+		requires storeAccount : interfaces.IAccountBasicOperation
+		requires anneAccount : interfaces.IAccountBasicOperation
+		requires bobAccount : interfaces.IAccountBasicOperation
+	}
+	component BankComp {
+		provides bankTransfer : interfaces.IBankTransfert = deskPart.deskTransfert
+		
+		part estorePart : AccountComp
+		part annePart : AccountComp
+		part bobPart : AccountComp
+		
+		part deskPart : DeskComp {
+			bind storeAccount to estorePart.accountTransfer
+			bind anneAccount to annePart.accountTransfer
+			bind bobAccount to bobPart.accountTransfer
+		}
+	}
+}
+

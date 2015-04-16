@@ -1,0 +1,22 @@
+import banking.BankComp
+
+namespace estore {
+		component RootCompQ2 {
+			provides go : Runnable = cl.go
+			
+			part cl : ClientComp {
+				bind needConsult to st.giveConsult
+				bind fast to st.express
+				bind cool to st.classic
+			}
+			part st : StoreComp {
+				bind provider to tr.providing
+				bind payment to bk.bankTransfer
+			}
+			part tr : TraceComp {
+				bind provider to pv.providing
+			}
+			part pv : ProviderComp
+			part bk : BankComp
+	}
+}

@@ -1,0 +1,8 @@
+import interfaces.IProvider
+
+namespace estore{
+		component TraceComp {
+		provides providing : IProvider
+		requires provider : IProvider
+	}
+}

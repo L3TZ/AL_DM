@@ -31,7 +31,7 @@ public class Main {
 //		cl.run();
 		
 		
-		RootComp.Component comp = (new RootCompImplQ1()).newComponent();
+		RootComp.Component comp = (new RootCompImpl()).newComponent();
 		comp.go().run();
 		
     }

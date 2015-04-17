@@ -1,0 +1,24 @@
+import interfaces.IProvider
+import question3.interfaces.ITrace
+
+namespace estore {
+		component FacadeComp {
+			provides providing : IProvider
+			requires provider : IProvider
+			requires trace : ITrace
+		}
+		component TraceCompQ3 {
+			provides trace : ITrace
+		}
+		component ProviderCompositeCompQ3 specializes ProviderComp {
+			provides providing : IProvider = fc.providing
+			
+			part fc : FacadeComp {
+				bind provider to pv.providing
+				bind trace to tr.trace
+			}
+			part tr : TraceCompQ3
+			part pv : ProviderComp
+		}
+}
+

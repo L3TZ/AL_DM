@@ -19,7 +19,7 @@ public class FacadeImpl implements IProvider {
 	public double getPrice(Object item) throws UnknownItemException {
 		double price = provider.getPrice(item);
 		trace.affiche("TRACE > Demande de prix de l'objet : "+item);
-		trace.affiche("TRACE > Réponse à la demande de prix : "+price);
+		trace.affiche("TRACE > Reponse a la demande de prix : "+price);
 		return price;
 	}
 
@@ -27,8 +27,8 @@ public class FacadeImpl implements IProvider {
 	public int order(IStoreLane store, Object item, int qty)
 			throws UnknownItemException {
 		int r = provider.order(store, item, qty);
-		trace.affiche("TRACE > Commande effectuée : "+item+" x"+qty);
-		trace.affiche("TRACE > Délai annoncé : "+r);
+		trace.affiche("TRACE > Commande effectuee : "+item+" x"+qty);
+		trace.affiche("TRACE > Delai annonce : "+r);
 		return r;
 	}
 

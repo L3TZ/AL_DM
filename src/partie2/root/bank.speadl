@@ -1,0 +1,27 @@
+import interfaces.IBankTransfert
+import estore.TraceCompQ3
+import question3.interfaces.ITrace
+
+namespace banking {
+	
+	component FacadeCompP2 {
+		provides deskTransfert : IBankTransfert
+		requires deskPort : IBankTransfert
+		requires trace : ITrace
+	}
+	
+	component DeskCompP2 specializes DeskComp {
+		provides deskTransfert : IBankTransfert = fc.deskTransfert
+		part dc : DeskComp {
+			bind anneAccount to anneAccount
+			bind bobAccount to bobAccount
+			bind storeAccount to storeAccount
+		}
+		part tr : TraceCompQ3
+		part fc : FacadeCompP2 {
+			bind deskPort to dc.deskTransfert
+			bind trace to tr.trace
+		}
+	}
+	
+}
